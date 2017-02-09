@@ -7,10 +7,10 @@
 
   <body>
     <script>
-      var width = 400;
-      var height = 400;
+      var width = 800;
+      var height = 800;
 
-      var radius = 200;
+      var radius = 300;
 
       var svg = d3.select("body").append("svg")
           .attr("width", width)
@@ -69,8 +69,9 @@
         }
       }
 
-      var array = [120, 90, 70, 150, 100];
-      drawPolarChart(array, radius, radius, "steelblue");
+      drawPolarChart([240, 180, 140, 220, 200], radius, radius);
+      drawPolarChart([100, 50, 120, 50, 130], radius, radius, "green");
+      drawPolarChart([60, 20, 100, 40, 60], radius, radius, "steelblue");
 
     </script>
   </body>
