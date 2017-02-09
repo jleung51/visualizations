@@ -27,9 +27,6 @@
        *
        */
       function drawPolarChart(array, color) {
-        if(color === null) {
-          color = "black";
-        }
 
         /**
          * Returns the maximum value in the array
@@ -66,9 +63,10 @@
          * @param {Number} endAngle Ending angle of the arc
          * @param {Number} translateRight Distance to move the final arc to the right
          * @param {Number} translateDown Distance to move the final arc downwards
+         * @param {String} color Name of the color to draw the arc in
          *
          */
-        function drawArc(arcSize, startAngle, endAngle, translateRight, translateDown) {
+        function drawArc(arcSize, startAngle, endAngle, translateRight, translateDown, color) {
           var arc = d3.svg.arc()
               .innerRadius(0).outerRadius(arcSize)
               .startAngle(startAngle).endAngle(endAngle);
@@ -81,12 +79,16 @@
               .attr("transform", translate_directions);
         }
 
+        if(color === null) {
+          color = "black";
+        }
+
         var angle = (Math.PI*2)/array.length;
         var arrayMax = arrayMax(array);
 
         var currentAngle = 0;
         for(var i = 0; i < array.length; i++) {
-          drawArc(array[i], currentAngle, currentAngle+angle, arrayMax, arrayMax);
+          drawArc(array[i], currentAngle, currentAngle+angle, arrayMax, arrayMax, color);
           currentAngle += angle;
         }
       }
