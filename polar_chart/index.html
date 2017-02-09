@@ -61,17 +61,17 @@
          * @param {Number} arcSize Radius of the arc
          * @param {Number} startAngle Beginning angle of the arc
          * @param {Number} endAngle Ending angle of the arc
-         * @param {Number} translateRight Distance to move the final arc to the right
-         * @param {Number} translateDown Distance to move the final arc downwards
+         * @param {Number} x X-coordinate of the center point of the arc
+         * @param {Number} y Y-coordinate of the center point of the arc
          * @param {String} color Name of the color to draw the arc in
          *
          */
-        function drawArc(arcSize, startAngle, endAngle, translateRight, translateDown, color) {
+        function drawArc(arcSize, startAngle, endAngle, x, y, color) {
           var arc = d3.svg.arc()
               .innerRadius(0).outerRadius(arcSize)
               .startAngle(startAngle).endAngle(endAngle);
 
-          var translate_directions = "translate(" + translateRight.toString() + ", " + translateDown.toString() + ")";
+          var translate_directions = "translate(" + x.toString() + ", " + y.toString() + ")";
           svg.append("path")
               .attr("d", arc)
               .style("fill", color)
