@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jleung51's Visualizations: Polar Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+      var width = 400;
+      var height = 400;
+
+      var radius = 200;
+
+      var svg = d3.select("body").append("svg")
+          .attr("width", width)
+          .attr("height", height);
+
+      function drawArc(arcSize, startAngle, endAngle, translateRight, translateDown) {
+        var arc = d3.svg.arc()
+            .innerRadius(0).outerRadius(arcSize)
+            .startAngle(startAngle).endAngle(endAngle);
+
+        var translate_directions = "translate(" + translateRight + ", " + translateDown + ")";
+        svg.append("path")
+            .attr("d", arc)
+            .style("fill", "steelblue")
+            .style("stroke", "white")
+            .attr("transform", translate_directions);
+      }
+
+      drawArc(radius/3*2, 0, Math.PI/3*2, radius, radius);
+      drawArc(radius/2, Math.PI/3*2, Math.PI/2*3, radius, radius);
+      drawArc(radius, Math.PI/2*3, Math.PI*2, radius, radius);
+
+    </script>
+  </body>
+</html>
