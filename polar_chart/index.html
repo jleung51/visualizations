@@ -16,12 +16,24 @@
           .attr("width", width)
           .attr("height", height);
 
+      /**
+       * Draws an arc for the D3 object svg
+       *
+       * Angles begin at North (0), move clockwise, and are measured in radians
+       *
+       * @param {Number} arcSize Radius of the arc
+       * @param {Number} startAngle Beginning angle of the arc
+       * @param {Number} endAngle Ending angle of the arc
+       * @param {Number} translateRight Distance to move the final arc to the right
+       * @param {Number} translateDown Distance to move the final arc downwards
+       *
+       */
       function drawArc(arcSize, startAngle, endAngle, translateRight, translateDown) {
         var arc = d3.svg.arc()
             .innerRadius(0).outerRadius(arcSize)
             .startAngle(startAngle).endAngle(endAngle);
 
-        var translate_directions = "translate(" + translateRight + ", " + translateDown + ")";
+        var translate_directions = "translate(" + translateRight.toString() + ", " + translateDown.toString() + ")";
         svg.append("path")
             .attr("d", arc)
             .style("fill", "steelblue")
