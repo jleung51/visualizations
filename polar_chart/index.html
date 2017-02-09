@@ -17,33 +17,66 @@
           .attr("height", height);
 
       /**
-       * Draws an arc for the D3 object svg
+       * Draws a full polar chart for the D3 object svg given an array of values
        *
-       * Angles begin at North (0), move clockwise, and are measured in radians
+       * The greater the value, the greater the size of the arc
+       * All arcs are evenly spaced and are drawn clockwise starting at North (0)
        *
-       * @param {Number} arcSize Radius of the arc
-       * @param {Number} startAngle Beginning angle of the arc
-       * @param {Number} endAngle Ending angle of the arc
-       * @param {Number} translateRight Distance to move the final arc to the right
-       * @param {Number} translateDown Distance to move the final arc downwards
+       * @param {Array} array Array of values to be charted
        *
        */
-      function drawArc(arcSize, startAngle, endAngle, translateRight, translateDown) {
-        var arc = d3.svg.arc()
-            .innerRadius(0).outerRadius(arcSize)
-            .startAngle(startAngle).endAngle(endAngle);
+      function drawPolarChart(array) {
 
-        var translate_directions = "translate(" + translateRight.toString() + ", " + translateDown.toString() + ")";
-        svg.append("path")
-            .attr("d", arc)
-            .style("fill", "steelblue")
-            .style("stroke", "white")
-            .attr("transform", translate_directions);
+        function arrayMax(array) {
+          if(array === null || array.length === 0) {
+            return null;
+          }
+          var max = array[0];
+          for(var i = 0; i < array.length; i++) {
+            if(array[i] > max) {
+              max = array[i];
+            }
+          }
+          return max;
+        }
+
+        /**
+         * Draws an arc for the D3 object svg
+         *
+         * Angles begin at North (0), move clockwise, and are measured in radians
+         *
+         * @param {Number} arcSize Radius of the arc
+         * @param {Number} startAngle Beginning angle of the arc
+         * @param {Number} endAngle Ending angle of the arc
+         * @param {Number} translateRight Distance to move the final arc to the right
+         * @param {Number} translateDown Distance to move the final arc downwards
+         *
+         */
+        function drawArc(arcSize, startAngle, endAngle, translateRight, translateDown) {
+          var arc = d3.svg.arc()
+              .innerRadius(0).outerRadius(arcSize)
+              .startAngle(startAngle).endAngle(endAngle);
+
+          var translate_directions = "translate(" + translateRight.toString() + ", " + translateDown.toString() + ")";
+          svg.append("path")
+              .attr("d", arc)
+              .style("fill", "steelblue")
+              .style("stroke", "white")
+              .attr("transform", translate_directions);
+        }
+
+        var angle = (Math.PI*2)/array.length;
+        var arrayMax = arrayMax(array);
+
+        var currentAngle = 0;
+        for(var i = 0; i < array.length; i++) {
+          drawArc(array[i], currentAngle, currentAngle+angle, arrayMax, arrayMax);
+          currentAngle += angle;
+        }
       }
 
-      drawArc(radius/3*2, 0, Math.PI/3*2, radius, radius);
-      drawArc(radius/2, Math.PI/3*2, Math.PI/2*3, radius, radius);
-      drawArc(radius, Math.PI/2*3, Math.PI*2, radius, radius);
+      var array = [120, 90, 70, 150, 100];
+      drawPolarChart(array);
 
     </script>
   </body>
