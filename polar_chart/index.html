@@ -27,6 +27,18 @@
        */
       function drawPolarChart(array) {
 
+        /**
+         * Returns the maximum value in the array
+         *
+         * If the array is null or empty, null is returned
+         * This is only here because I hate hacks like:
+         * http://www.jstips.co/en/calculate-the-max-min-value-from-an-array/
+         * Then again, I suppose I shouldn't be using Javascript if I hate hacks...
+         *
+         * @param {Array} array Array of values
+         * @return {Number} Maximum value in the array, or null if array is null or empty
+         *
+         */
         function arrayMax(array) {
           if(array === null || array.length === 0) {
             return null;
