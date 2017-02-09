@@ -23,9 +23,13 @@
        * All arcs are evenly spaced and are drawn clockwise starting at North (0)
        *
        * @param {Array} array Array of values to be charted
+       * @param {String} color (Optional) Name of the color to draw the chart in; black if not specified
        *
        */
-      function drawPolarChart(array) {
+      function drawPolarChart(array, color) {
+        if(color === null) {
+          color = "black";
+        }
 
         /**
          * Returns the maximum value in the array
@@ -72,7 +76,7 @@
           var translate_directions = "translate(" + translateRight.toString() + ", " + translateDown.toString() + ")";
           svg.append("path")
               .attr("d", arc)
-              .style("fill", "steelblue")
+              .style("fill", color)
               .style("stroke", "white")
               .attr("transform", translate_directions);
         }
@@ -88,7 +92,7 @@
       }
 
       var array = [120, 90, 70, 150, 100];
-      drawPolarChart(array);
+      drawPolarChart(array, "steelblue");
 
     </script>
   </body>
