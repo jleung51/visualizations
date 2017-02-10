@@ -26,6 +26,41 @@ drawPolarChart(values, xCenter, yCenter, "blue",
 );
 
 /**
+ * Creates array of specific length with random integers >= lower and < upper
+ *
+ * @param {Number} length Length of the final array
+ * @param {Number} lower Minimum value of the random numbers
+ * @param {Number} upper 1 greater than the maximum value of the random numbers
+ * @return {Array} array Array of length "length" with random integers equal
+ * to or greater than "lower", and less than "upper"
+ *
+ */
+function arrayOfRandomIntegers(length, lower, upper) {
+  var range = upper - lower;
+  var array = [];
+  for(var i = 0; i < length; i++) {
+    var randVal = Math.random()*range + lower;
+    array.push(Math.round(randVal));
+  }
+  return array;
+}
+
+/**
+ * Generates array with stringified values
+ *
+ * @param {Array} array Array of values
+ * @return {Array} array Array of String values
+ *
+ */
+function arrayToStringArray(array) {
+  var arrayStrings = [];
+  for(var i = 0; i < array.length; i++) {
+    arrayStrings.push(array[i].toString())
+  }
+  return arrayStrings;
+}
+
+/**
  * Draws a full polar chart for the D3 object svg given an array of values
  *
  * The greater the value, the greater the size of the arc
@@ -77,7 +112,8 @@ function drawPolarChart(array, x, y, color, textArray, textColor) {
     var arc = d3.svg.arc()
         .innerRadius(0).outerRadius(arcSize)
         .startAngle(startAngle).endAngle(endAngle);
-    var translateDirections = "translate(" + x.toString() + ", " + y.toString() + ")";
+    var translateDirections = "translate(" + x.toString() + ", " +
+        y.toString() + ")";
 
     svg.append("path")
         .attr("id", elementId)
@@ -114,39 +150,4 @@ function drawPolarChart(array, x, y, color, textArray, textColor) {
       textArray[i], textColor
     );
   }
-}
-
-/**
- * Creates array of specific length with random integers >= lower and < upper
- *
- * @param {Number} length Length of the final array
- * @param {Number} lower Minimum value of the random numbers
- * @param {Number} upper 1 greater than the maximum value of the random numbers
- * @return {Array} array Array of length "length" with random integers equal
- * to or greater than "lower", and less than "upper"
- *
- */
-function arrayOfRandomIntegers(length, lower, upper) {
-  var range = upper - lower;
-  var array = [];
-  for(var i = 0; i < length; i++) {
-    var randVal = Math.random()*range + lower;
-    array.push(Math.round(randVal));
-  }
-  return array;
-}
-
-/**
- * Generates array with stringified values
- *
- * @param {Array} array Array of values
- * @return {Array} array Array of String values
- *
- */
-function arrayToStringArray(array) {
-  var arrayStrings = [];
-  for(var i = 0; i < array.length; i++) {
-    arrayStrings.push(array[i].toString())
-  }
-  return arrayStrings;
 }
