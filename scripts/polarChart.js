@@ -8,6 +8,23 @@ var svg = d3.select("#polarChart").append("svg")
     .attr("width", canvasWidth)
     .attr("height", canvasHeight);
 
+var values = [];
+
+values = arrayOfRandomIntegers(5, 175, 225);
+drawPolarChart(values, xCenter, yCenter, "black",
+    arrayToStringArray(values), "black"
+);
+
+values = arrayOfRandomIntegers(5, 100, 150);
+drawPolarChart(values, xCenter, yCenter, "green",
+    arrayToStringArray(values), "white"
+);
+
+values = arrayOfRandomIntegers(5, 25, 75);
+drawPolarChart(values, xCenter, yCenter, "blue",
+    arrayToStringArray(values), "white"
+);
+
 /**
  * Draws a full polar chart for the D3 object svg given an array of values
  *
@@ -133,20 +150,3 @@ function arrayToStringArray(array) {
   }
   return arrayStrings;
 }
-
-var values = [];
-
-values = arrayOfRandomIntegers(5, 175, 225);
-drawPolarChart(values, xCenter, yCenter, "black",
-    arrayToStringArray(values), "black"
-);
-
-values = arrayOfRandomIntegers(5, 100, 150);
-drawPolarChart(values, xCenter, yCenter, "green",
-    arrayToStringArray(values), "white"
-);
-
-values = arrayOfRandomIntegers(5, 25, 75);
-drawPolarChart(values, xCenter, yCenter, "blue",
-    arrayToStringArray(values), "white"
-);
