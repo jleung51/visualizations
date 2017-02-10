@@ -40,12 +40,12 @@ function drawPolarChart(array, x, y, color) {
         .innerRadius(0).outerRadius(arcSize)
         .startAngle(startAngle).endAngle(endAngle);
 
-    var translate_directions = "translate(" + x.toString() + ", " + y.toString() + ")";
+    var translateDirections = "translate(" + x.toString() + ", " + y.toString() + ")";
     svg.append("path")
         .attr("d", arc)
         .style("fill", color)
         .style("stroke", "white")
-        .attr("transform", translate_directions);
+        .attr("transform", translateDirections);
   }
 
   if(color === null) {
