@@ -61,7 +61,24 @@ function drawPolarChart(array, x, y, color) {
   }
 }
 
-drawPolarChart([240, 180, 140, 220, 200], xCenter, yCenter);
-drawPolarChart([100, 50, 120, 50, 130], xCenter, yCenter, "green");
-drawPolarChart([60, 20, 100, 40, 60], xCenter, yCenter, "steelblue");
-2
+/**
+ * Creates an array of specific length, with random numbers >= lower and < upper
+ *
+ * @param {Number} length Length of the final array
+ * @param {Number} lower Minimum value of the random numbers
+ * @param {Number} upper 1 greater than the maximum value of the random numbers
+ *
+ */
+function arrayOfRandomNumbers(length, lower, upper) {
+  var range = upper - lower;
+  var array = [];
+  for(var i = 0; i < length; i++) {
+    var randVal = Math.random()*range + lower;
+    array.push(randVal);
+  }
+  return array;
+}
+
+drawPolarChart(arrayOfRandomNumbers(5, 175, 225), xCenter, yCenter);
+drawPolarChart(arrayOfRandomNumbers(5, 100, 150), xCenter, yCenter, "green");
+drawPolarChart(arrayOfRandomNumbers(5, 25, 75), xCenter, yCenter, "blue");
