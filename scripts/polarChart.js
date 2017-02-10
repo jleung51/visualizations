@@ -148,5 +148,5 @@ drawPolarChart(values, xCenter, yCenter, "green",
 
 values = arrayOfRandomIntegers(5, 25, 75);
 drawPolarChart(values, xCenter, yCenter, "blue",
-    arrayToStringArray(values), "steelblue"
+    arrayToStringArray(values), "white"
 );
