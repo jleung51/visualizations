@@ -53,11 +53,8 @@ function drawPolarChart(array, x, y, color) {
   }
 
   var angle = (Math.PI*2)/array.length;
-  var currentAngle = 0;
-
   for(var i = 0; i < array.length; i++) {
-    drawArc(array[i], currentAngle, currentAngle+angle, x, y, color);
-    currentAngle += angle;
+    drawArc(array[i], i*angle, i*angle + angle, x, y, color);
   }
 }
 
