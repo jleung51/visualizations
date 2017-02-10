@@ -1,5 +1,5 @@
-var canvasWidth = 1000;
-var canvasHeight = 600;
+var canvasWidth = 500;
+var canvasHeight = 500;
 
 var xCenter = canvasWidth/2;
 var yCenter = canvasHeight/2;
