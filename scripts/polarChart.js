@@ -8,6 +8,8 @@
  *
  */
 
+"use strict";
+
 var canvasWidth = 500;
 var canvasHeight = 500;
 
