@@ -26,12 +26,12 @@ drawPolarChart(values, xCenter, yCenter, "black",
 );
 
 values = arrayOfRandomIntegers(5, 100, 150);
-drawPolarChart(values, xCenter, yCenter, "green",
+drawPolarChart(values, xCenter, yCenter, "darkblue",
     arrayToStringArray(values), "white"
 );
 
 values = arrayOfRandomIntegers(5, 25, 75);
-drawPolarChart(values, xCenter, yCenter, "blue",
+drawPolarChart(values, xCenter, yCenter, "red",
     arrayToStringArray(values), "white"
 );
 
