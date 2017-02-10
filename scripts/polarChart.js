@@ -32,10 +32,15 @@ function drawPolarChart(array, x, y, color) {
    * @param {Number} endAngle Ending angle of the arc
    * @param {Number} x X-coordinate of the center point of the arc
    * @param {Number} y Y-coordinate of the center point of the arc
-   * @param {String} color Name of the color to draw the arc in
+   * @param {String} color (Optional) Name of the color to draw the arc in,
+   * black if not specified
    *
    */
   function drawArc(arcSize, startAngle, endAngle, x, y, color) {
+    if(color === null) {
+      color = "black";
+    }
+
     var arc = d3.svg.arc()
         .innerRadius(0).outerRadius(arcSize)
         .startAngle(startAngle).endAngle(endAngle);
@@ -46,10 +51,6 @@ function drawPolarChart(array, x, y, color) {
         .style("fill", color)
         .style("stroke", "white")
         .attr("transform", translateDirections);
-  }
-
-  if(color === null) {
-    color = "black";
   }
 
   var angle = (Math.PI*2)/array.length;
