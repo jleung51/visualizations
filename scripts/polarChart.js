@@ -1,3 +1,13 @@
+/**
+ * Javascript program which utilizes the D3 library to generate a polar chart
+ * from data. Labels can be included.
+ * The example below draws 3 polar charts from randomly generated data.
+ *
+ * @summary Javascript program which generates a polar chart from data.
+ * @link https://jleung51.github.io/visualizations/
+ *
+ */
+
 var canvasWidth = 500;
 var canvasHeight = 500;
 
