@@ -1,8 +1,8 @@
 var canvasWidth = 1000;
 var canvasHeight = 600;
 
-var xCenter = 600;
-var yCenter = 300;
+var xCenter = canvasWidth/2;
+var yCenter = canvasHeight/2;
 
 var svg = d3.select("#polarChart").append("svg")
     .attr("width", canvasWidth)
