@@ -72,7 +72,7 @@ function arrayOfRandomNumbers(length, lower, upper) {
   var array = [];
   for(var i = 0; i < length; i++) {
     var randVal = Math.random()*range + lower;
-    array.push(randVal);
+    array.push(Math.round(randVal));
   }
   return array;
 }
