@@ -127,7 +127,6 @@ function drawPolarChart(array, x, y, color, textArray, textColor) {
       svg.append("text").append("textPath")
           .attr("xlink:href", "#"+elementId)
           .attr("startOffset", "18%")
-          // .attr("dx", 20)
           .style("text-anchor", "middle")
           .style("stroke", textColor)
           .text(text);
