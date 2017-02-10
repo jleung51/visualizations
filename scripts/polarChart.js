@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>jleung51's Visualizations: Polar Chart</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-  </head>
-
-  <body>
-    <script>
       var width = 1000;
       var height = 600;
 
       var xCenter = 600;
       var yCenter = 300;
 
-      var svg = d3.select("body").append("svg")
+      var svg = d3.select("#polarChart").append("svg")
           .attr("width", width)
           .attr("height", height);
 
@@ -73,7 +64,4 @@
       drawPolarChart([240, 180, 140, 220, 200], xCenter, yCenter);
       drawPolarChart([100, 50, 120, 50, 130], xCenter, yCenter, "green");
       drawPolarChart([60, 20, 100, 40, 60], xCenter, yCenter, "steelblue");
-
-    </script>
-  </body>
-</html>
+2
