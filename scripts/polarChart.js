@@ -1,12 +1,12 @@
-var width = 1000;
-var height = 600;
+var canvasWidth = 1000;
+var canvasHeight = 600;
 
 var xCenter = 600;
 var yCenter = 300;
 
 var svg = d3.select("#polarChart").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    .attr("width", canvasWidth)
+    .attr("height", canvasHeight);
 
 /**
  * Draws a full polar chart for the D3 object svg given an array of values
