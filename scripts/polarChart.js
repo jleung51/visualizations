@@ -23,17 +23,17 @@ var svg = d3.select("#polarChart").append("svg")
 var values = [];
 
 values = arrayOfRandomIntegers(randomInteger(3, 7), 175, 225);
-drawPolarChart(values, xCenter, yCenter, "black",
+drawPolarChart(svg, values, xCenter, yCenter, "black",
     arrayToStringArray(values), "black"
 );
 
 values = arrayOfRandomIntegers(randomInteger(3, 7), 100, 150);
-drawPolarChart(values, xCenter, yCenter, "darkblue",
+drawPolarChart(svg, values, xCenter, yCenter, "darkblue",
     arrayToStringArray(values), "white"
 );
 
 values = arrayOfRandomIntegers(randomInteger(3, 7), 25, 75);
-drawPolarChart(values, xCenter, yCenter, "red",
+drawPolarChart(svg, values, xCenter, yCenter, "red",
     arrayToStringArray(values), "white"
 );
 
@@ -86,11 +86,12 @@ function arrayToStringArray(array) {
 }
 
 /**
- * Draws a full polar chart for the D3 object svg given an array of values
+ * Draws a full polar chart for a D3 object given an array of values
  *
  * The greater the value, the greater the size of the arc
  * All arcs are evenly spaced and are drawn clockwise starting at North (0)
  *
+ * @param {Object} d3Object D3 object in which the chart will be drawn
  * @param {Array} array Array of values to be charted
  * @param {Number} x X-coordinate of the center point of the arc
  * @param {Number} y Y-coordinate of the center point of the arc
@@ -102,13 +103,14 @@ function arrayToStringArray(array) {
  * black if not specified
  *
  */
-function drawPolarChart(array, x, y, color, textArray, textColor) {
+function drawPolarChart(d3Object, array, x, y, color, textArray, textColor) {
 
   /**
-   * Draws an arc for the D3 object svg
+   * Draws an optionally labeled pie sector for a D3 object
    *
    * Angles begin at North (0), move clockwise, and are measured in radians
    *
+   * @param {Object} d3Object D3 object in which the chart will be drawn
    * @param {Number} arcSize Radius of the arc
    * @param {Number} startAngle Beginning angle of the arc
    * @param {Number} endAngle Ending angle of the arc
@@ -121,7 +123,7 @@ function drawPolarChart(array, x, y, color, textArray, textColor) {
    * black if not specified
    *
    */
-  function drawArc(arcSize, startAngle, endAngle, x, y, arcColor,
+  function drawArc(d3Object, arcSize, startAngle, endAngle, x, y, arcColor,
       text, textColor) {
 
     if(color === null) {
@@ -140,7 +142,7 @@ function drawPolarChart(array, x, y, color, textArray, textColor) {
     var translateDirections = "translate(" + x.toString() + ", " +
         y.toString() + ")";
 
-    svg.append("path")
+    d3Object.append("path")
         .attr("id", elementId)
         .attr("d", arc)
         .style("fill", color)
@@ -149,7 +151,7 @@ function drawPolarChart(array, x, y, color, textArray, textColor) {
 
     // Draw the text
     if(text !== undefined || text !== null) {
-      svg.append("text").append("textPath")
+      d3Object.append("text").append("textPath")
           .attr("xlink:href", "#"+elementId)
           .attr("startOffset", "18%")
           .style("text-anchor", "middle")
@@ -169,7 +171,7 @@ function drawPolarChart(array, x, y, color, textArray, textColor) {
 
   for(var i = 0; i < array.length; i++) {
     drawArc(
-      array[i], i*angle, i*angle + angle,
+      d3Object, array[i], i*angle, i*angle + angle,
       x, y, color,
       textArray[i], textColor
     );
