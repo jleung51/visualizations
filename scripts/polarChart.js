@@ -13,13 +13,12 @@
 var canvasWidth = 500;
 var canvasHeight = 500;
 
-var xCenter = canvasWidth/2;
-var yCenter = canvasHeight/2;
-
 var svg = d3.select("#polarChart").append("svg")
     .attr("width", canvasWidth)
     .attr("height", canvasHeight);
 
+var xCenter = canvasWidth/2;
+var yCenter = canvasHeight/2;
 var values = [];
 
 values = arrayOfRandomIntegers(randomInteger(3, 7), 175, 225);
