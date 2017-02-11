@@ -123,7 +123,8 @@ function drawPolarChart(d3Object, array, x, y, color, textArray, textColor) {
    * black if not specified
    *
    */
-  function drawArc(d3Object, arcSize, startAngle, endAngle, x, y, arcColor,
+  const drawArc = function(
+      d3Object, arcSize, startAngle, endAngle, x, y, arcColor,
       text, textColor) {
 
     if(color === null) {
