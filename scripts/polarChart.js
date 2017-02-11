@@ -22,20 +22,35 @@ var svg = d3.select("#polarChart").append("svg")
 
 var values = [];
 
-values = arrayOfRandomIntegers(5, 175, 225);
+values = arrayOfRandomIntegers(randomInteger(3, 7), 175, 225);
 drawPolarChart(values, xCenter, yCenter, "black",
     arrayToStringArray(values), "black"
 );
 
-values = arrayOfRandomIntegers(5, 100, 150);
+values = arrayOfRandomIntegers(randomInteger(3, 7), 100, 150);
 drawPolarChart(values, xCenter, yCenter, "darkblue",
     arrayToStringArray(values), "white"
 );
 
-values = arrayOfRandomIntegers(5, 25, 75);
+values = arrayOfRandomIntegers(randomInteger(3, 7), 25, 75);
 drawPolarChart(values, xCenter, yCenter, "red",
     arrayToStringArray(values), "white"
 );
+
+/**
+ * Creates a random integer >= lower and < upper
+ *
+ * @param {Number} lower Minimum value of the random number
+ * @param {Number} upper 1 greater than the maximum value of the random number
+ * @return {Number} number Random integer equal to or greater than "lower",
+ * and less than "upper"
+ *
+ */
+function randomInteger(lower, upper) {
+  var range = upper - lower;
+  var randNum = Math.random()*range + lower;
+  return Math.round(randNum);
+}
 
 /**
  * Creates array of specific length with random integers >= lower and < upper
@@ -48,11 +63,9 @@ drawPolarChart(values, xCenter, yCenter, "red",
  *
  */
 function arrayOfRandomIntegers(length, lower, upper) {
-  var range = upper - lower;
   var array = [];
   for(var i = 0; i < length; i++) {
-    var randVal = Math.random()*range + lower;
-    array.push(Math.round(randVal));
+    array.push(randomInteger(lower, upper));
   }
   return array;
 }
