@@ -10,32 +10,6 @@
 
 "use strict";
 
-var canvasWidth = 500;
-var canvasHeight = 500;
-
-var svg = d3.select("#polarChart").append("svg")
-    .attr("width", canvasWidth)
-    .attr("height", canvasHeight);
-
-var xCenter = canvasWidth/2;
-var yCenter = canvasHeight/2;
-var values = [];
-
-values = arrayOfRandomIntegers(randomInteger(3, 7), 175, 225);
-drawPolarChart(svg, values, xCenter, yCenter, "black",
-    arrayToStringArray(values), "black"
-);
-
-values = arrayOfRandomIntegers(randomInteger(3, 7), 100, 150);
-drawPolarChart(svg, values, xCenter, yCenter, "darkblue",
-    arrayToStringArray(values), "white"
-);
-
-values = arrayOfRandomIntegers(randomInteger(3, 7), 25, 75);
-drawPolarChart(svg, values, xCenter, yCenter, "red",
-    arrayToStringArray(values), "white"
-);
-
 /**
  * Creates a random integer >= lower and < upper
  *
@@ -177,3 +151,34 @@ function drawPolarChart(d3Object, array, x, y, color, textArray, textColor) {
     );
   }
 }
+
+(function() {
+
+  var canvasWidth = 500;
+  var canvasHeight = 500;
+
+  var svg = d3.select("#polarChart").append("svg")
+      .attr("width", canvasWidth)
+      .attr("height", canvasHeight);
+
+  var xCenter = canvasWidth/2;
+  var yCenter = canvasHeight/2;
+  var values = [];
+
+  values = arrayOfRandomIntegers(randomInteger(3, 7), 175, 225);
+  drawPolarChart(svg, values, xCenter, yCenter, "black",
+      arrayToStringArray(values), "black"
+  );
+
+  values = arrayOfRandomIntegers(randomInteger(3, 7), 100, 150);
+  drawPolarChart(svg, values, xCenter, yCenter, "darkblue",
+      arrayToStringArray(values), "white"
+  );
+
+  values = arrayOfRandomIntegers(randomInteger(3, 7), 25, 75);
+  drawPolarChart(svg, values, xCenter, yCenter, "red",
+      arrayToStringArray(values), "white"
+  );
+
+})();
+
