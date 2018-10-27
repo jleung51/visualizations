@@ -3,3 +3,19 @@
 body {
     font-family: "Open Sans", "Helvetica", sans-serif;
 }
+
+.barChart text {
+  fill: white;
+  text-anchor: middle;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}

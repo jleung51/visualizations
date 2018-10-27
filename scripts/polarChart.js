@@ -154,15 +154,15 @@ function drawPolarChart(d3Object, array, x, y, color, textArray, textColor) {
 
 (function() {
 
-  var canvasWidth = 500;
-  var canvasHeight = 500;
+  var width = 500;
+  var height = 500;
 
   var svg = d3.select("#polarChart").append("svg")
-      .attr("width", canvasWidth)
-      .attr("height", canvasHeight);
+      .attr("width", width)
+      .attr("height", height);
 
-  var xCenter = canvasWidth/2;
-  var yCenter = canvasHeight/2;
+  var xCenter = width/2;
+  var yCenter = height/2;
   var values = [];
 
   values = arrayOfRandomIntegers(randomInteger(3, 7), 175, 225);
@@ -181,4 +181,3 @@ function drawPolarChart(d3Object, array, x, y, color, textArray, textColor) {
   );
 
 })();
-
